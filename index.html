@@ -271,12 +271,15 @@
             fetch(this.action, {
                 method: "POST",
                 body: new FormData(this)
-                mode: "no-cors"
+                headers: {
+                    "Accept": "text/plain"
+                }
             })
-            .then(response => response.text())
-            .then(text => {
-                alert(text);
-                this.reset();
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
             })
             .catch(error => {
                 console.error("Fetch error:", error);
@@ -289,11 +292,15 @@
             fetch(this.action, {
                 method: "POST",
                 body: new FormData(this)
+                headers: {
+                    "Accept": "text/plain"
+                }
             })
-            .then(response => response.text())
-            .then(text => {
-                alert(text);
-                this.reset();
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
             })
             .catch(error => {
                 console.error("Fetch error:", error);
