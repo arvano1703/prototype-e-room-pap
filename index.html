@@ -271,6 +271,7 @@
             fetch(this.action, {
                 method: "POST",
                 body: new FormData(this)
+                mode: "no-cors"
             })
             .then(response => response.text())
             .then(text => {
