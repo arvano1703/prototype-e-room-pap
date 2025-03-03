@@ -172,8 +172,7 @@
             <button class="tablinks" onclick="showForm('list')">Daftar Pemesanan</button>
         </div>
 
-        <!-- Formulir Pemesanan -->
-        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/AKfycbyRHCqqOF_nzb_vNMIrFQnRpBibOgirjuPYcZaFsBdgdwD5ri0BsQanIKWg3apph6q3Hw/exec">
+        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec">
             <input type="hidden" name="action" value="book">
             <label for="nama">Nama Pemesan</label>
             <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
@@ -201,7 +200,6 @@
             <button type="submit" id="bookBtn">Pesan Sekarang</button>
         </form>
 
-        <!-- Status Ruangan -->
         <div id="roomStatus">
             <div class="room-status" id="roomA">
                 <span class="status-indicator status-available"></span>
@@ -217,8 +215,7 @@
             </div>
         </div>
 
-        <!-- Formulir Pembatalan -->
-        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/AKfycbyRHCqqOF_nzb_vNMIrFQnRpBibOgirjuPYcZaFsBdgdwD5ri0BsQanIKWg3apph6q3Hw/exec">
+        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec">
             <input type="hidden" name="action" value="cancel">
             <label for="idPemesanan">ID Pemesanan</label>
             <input type="text" id="idPemesanan" name="idPemesanan" required placeholder="Masukkan ID Pemesanan Anda">
@@ -226,7 +223,6 @@
             <button type="submit" id="cancelBtn">Batalkan Pesanan</button>
         </form>
 
-        <!-- Daftar Pemesanan Aktif -->
         <div id="bookingList">
             <table id="bookingTable">
                 <thead>
@@ -245,7 +241,6 @@
     </div>
 
     <script>
-        // Toggle antara form dan daftar
         function showForm(type) {
             document.getElementById("bookingForm").style.display = type === "book" ? "block" : "none";
             document.getElementById("roomStatus").style.display = type === "status" ? "block" : "none";
@@ -258,7 +253,6 @@
             if (type === "status") loadRoomStatus();
         }
 
-        // Validasi dan pengiriman formulir pemesanan
         document.getElementById("bookingForm").onsubmit = function(e) {
             e.preventDefault();
             let waktuMulai = document.getElementById("waktu_mulai").value;
@@ -284,11 +278,11 @@
                 this.reset();
             })
             .catch(error => {
+                console.error("Fetch error:", error);
                 alert("Terjadi kesalahan: " + error);
             });
         };
 
-        // Pengiriman formulir pembatalan
         document.getElementById("cancelForm").onsubmit = function(e) {
             e.preventDefault();
             fetch(this.action, {
@@ -301,13 +295,13 @@
                 this.reset();
             })
             .catch(error => {
+                console.error("Fetch error:", error);
                 alert("Terjadi kesalahan: " + error);
             });
         };
 
-        // Ambil dan tampilkan daftar pemesanan
         function loadBookings() {
-            fetch("https://script.google.com/macros/s/AKfycbyRHCqqOF_nzb_vNMIrFQnRpBibOgirjuPYcZaFsBdgdwD5ri0BsQanIKWg3apph6q3Hw/exec")
+            fetch("https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec")
             .then(response => response.json())
             .then(data => {
                 const tbody = document.querySelector("#bookingTable tbody");
@@ -326,13 +320,13 @@
                 });
             })
             .catch(error => {
+                console.error("Fetch error:", error);
                 alert("Gagal memuat daftar pemesanan: " + error);
             });
         }
 
-        // Ambil dan tampilkan status ruangan
         function loadRoomStatus() {
-            fetch("https://script.google.com/macros/s/AKfycbyRHCqqOF_nzb_vNMIrFQnRpBibOgirjuPYcZaFsBdgdwD5ri0BsQanIKWg3apph6q3Hw/exec")
+            fetch("https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec")
             .then(response => response.json())
             .then(data => {
                 const now = new Date();
@@ -343,7 +337,7 @@
                 };
 
                 data.forEach(booking => {
-                    const [day, month, year] = booking.tanggal.split('/'); // Asumsi DD/MM/YYYY
+                    const [year, month, day] = booking.tanggal.split('-');
                     const startTime = new Date(`${year}-${month}-${day}T${booking.waktuMulai}:00`);
                     const endTime = new Date(`${year}-${month}-${day}T${booking.waktuSelesai}:00`);
                     const isInUse = now >= startTime && now <= endTime && now.toDateString() === startTime.toDateString();
@@ -366,11 +360,11 @@
                 });
             })
             .catch(error => {
+                console.error("Fetch error:", error);
                 alert("Gagal memuat status ruangan: " + error);
             });
         }
 
-        // Tampilkan form pemesanan secara default
         showForm("book");
     </script>
 </body>
