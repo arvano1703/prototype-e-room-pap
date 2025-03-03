@@ -19,7 +19,7 @@
             <button class="tablinks" onclick="showForm('list')">Daftar Pemesanan</button>
         </div>
 
-        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec">
+        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/AKfycbyV-szQst1XxNXP-eBHm_HNKRWcPgUsbg8xNiJZ9pQjBEcSZVvdN1mT3U5LwQy_KaYA/exec">
             <input type="hidden" name="action" value="book">
             <label for="nama">Nama Pemesan</label>
             <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec">
+        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/AKfycbyV-szQst1XxNXP-eBHm_HNKRWcPgUsbg8xNiJZ9pQjBEcSZVvdN1mT3U5LwQy_KaYA/exec">
             <input type="hidden" name="action" value="cancel">
             <label for="idPemesanan">ID Pemesanan</label>
             <input type="text" id="idPemesanan" name="idPemesanan" required placeholder="Masukkan ID Pemesanan Anda">
@@ -157,7 +157,7 @@
         };
 
         function loadBookings() {
-            fetch("https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec")
+            fetch("https://script.google.com/macros/s/AKfycbyV-szQst1XxNXP-eBHm_HNKRWcPgUsbg8xNiJZ9pQjBEcSZVvdN1mT3U5LwQy_KaYA/exec")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -187,7 +187,7 @@
         }
 
         function loadRoomStatus() {
-            fetch("https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec")
+            fetch("https://script.google.com/macros/s/AKfycbyV-szQst1XxNXP-eBHm_HNKRWcPgUsbg8xNiJZ9pQjBEcSZVvdN1mT3U5LwQy_KaYA/exec")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
