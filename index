@@ -172,7 +172,7 @@
             <button class="tablinks" onclick="showForm('list')">Daftar Pemesanan</button>
         </div>
 
-        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec">
+        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec">
             <input type="hidden" name="action" value="book">
             <label for="nama">Nama Pemesan</label>
             <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
@@ -215,7 +215,7 @@
             </div>
         </div>
 
-        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec">
+        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec">
             <input type="hidden" name="action" value="cancel">
             <label for="idPemesanan">ID Pemesanan</label>
             <input type="text" id="idPemesanan" name="idPemesanan" required placeholder="Masukkan ID Pemesanan Anda">
@@ -317,7 +317,7 @@
         };
 
         function loadBookings() {
-            fetch("https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec")
+            fetch("https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -347,7 +347,7 @@
         }
 
         function loadRoomStatus() {
-            fetch("https://script.google.com/macros/s/AKfycbxuJ0yB8QJ7qE7UcW8zA2lD2s5lN9eQvZw9w8hCRHGmoG9Wp5uBO6mO/exec")
+            fetch("https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
