@@ -5,160 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Pemesanan Ruang</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #74ebd5, #acb6e5);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 700px;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        label {
-            display: block;
-            margin: 15px 0 5px;
-            color: #555;
-            font-weight: 500;
-        }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-            box-sizing: border-box;
-        }
-        input:focus, select:focus {
-            border-color: #74ebd5;
-            outline: none;
-            box-shadow: 0 0 5px rgba(116, 235, 213, 0.5);
-        }
-        select {
-            appearance: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="gray"><polygon points="0,0 12,0 6,12"/></svg>') no-repeat right 10px center;
-            background-size: 12px;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-            margin-top: 20px;
-        }
-        #bookBtn {
-            background: #74ebd5;
-        }
-        #bookBtn:hover {
-            background: #5ac8b0;
-            transform: translateY(-2px);
-        }
-        #cancelBtn {
-            background: #ff6b6b;
-        }
-        #cancelBtn:hover {
-            background: #e55a5a;
-            transform: translateY(-2px);
-        }
-        button:active {
-            transform: translateY(0);
-        }
-        .tab {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .tab button {
-            width: 24%;
-            padding: 10px;
-            background: #ddd;
-            color: #333;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .tab button.active {
-            background: #74ebd5;
-            color: white;
-        }
-        #bookingForm, #cancelForm, #bookingList, #roomStatus {
-            display: none;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background: #74ebd5;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background: #f9f9f9;
-        }
-        .room-status {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-        }
-        .status-indicator {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .status-in-use {
-            background: #ff6b6b;
-            animation: pulse 1.5s infinite;
-        }
-        .status-available {
-            background: #74ebd5;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        .room-name {
-            font-size: 18px;
-            color: #333;
-        }
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            .tab button {
-                font-size: 12px;
-            }
-        }
+        /* CSS Anda di sini */
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -172,20 +19,16 @@
             <button class="tablinks" onclick="showForm('list')">Daftar Pemesanan</button>
         </div>
 
-        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec">
+        <form id="bookingForm" method="POST" action="https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec">
             <input type="hidden" name="action" value="book">
             <label for="nama">Nama Pemesan</label>
             <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
-
             <label for="tanggal">Tanggal Pemesanan</label>
             <input type="date" id="tanggal" name="tanggal" required>
-
             <label for="waktu_mulai">Waktu Mulai</label>
             <input type="time" id="waktu_mulai" name="waktu_mulai" required>
-
             <label for="waktu_selesai">Waktu Selesai</label>
             <input type="time" id="waktu_selesai" name="waktu_selesai" required>
-
             <label for="ruangan">Pilih Ruangan</label>
             <select id="ruangan" name="ruangan" required>
                 <option value="">-- Pilih Ruangan --</option>
@@ -193,10 +36,8 @@
                 <option value="Ruang B">Ruang B</option>
                 <option value="Ruang C">Ruang C</option>
             </select>
-
             <label for="whatsapp">Nomor WhatsApp</label>
             <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Masukkan nomor WhatsApp (contoh: 08123456789)">
-
             <button type="submit" id="bookBtn">Pesan Sekarang</button>
         </form>
 
@@ -215,11 +56,10 @@
             </div>
         </div>
 
-        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec">
+        <form id="cancelForm" method="POST" action="https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec">
             <input type="hidden" name="action" value="cancel">
             <label for="idPemesanan">ID Pemesanan</label>
             <input type="text" id="idPemesanan" name="idPemesanan" required placeholder="Masukkan ID Pemesanan Anda">
-
             <button type="submit" id="cancelBtn">Batalkan Pesanan</button>
         </form>
 
@@ -317,7 +157,7 @@
         };
 
         function loadBookings() {
-            fetch("https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec")
+            fetch("https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -347,7 +187,7 @@
         }
 
         function loadRoomStatus() {
-            fetch("https://script.google.com/macros/s/AKfycbxt3Jcv53jxdY_zlz8fpRaa3QjMQj_4cZiTQjruOsVfTsxO1e1uiK1o9Ml56RG52ksF/exec")
+            fetch("https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
